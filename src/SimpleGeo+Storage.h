@@ -27,7 +27,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-
+#import "SimpleGeo.h"
 #import "SGGeometryCollection.h"
 #import "SGRecord.h"
 
@@ -60,23 +60,23 @@
  * Called when a record was successfully deleted.
  *
  * @param layer Layer that the record was deleted from.
- * @param id    ID of the record that was deleted.
+ * @param recordId    ID of the record that was deleted.
  */
 - (void)didDeleteRecordInLayer:(NSString *)layer
-                        withId:(NSString *)id;
+                        withId:(NSString *)recordId;
 
 /*!
  * Called when the location history for a record was loaded.
  *
  * @param history  Record history.
  * @param recordId Record ID.
- * @param layer    Layer containing the record.
+ * @param query    Query information.
  * @param cursor   Cursor string to retrieve the next set of historical
  *                 locations.
  */
 - (void)didLoadHistory:(SGGeometryCollection *)history
-           forRecordId:(NSString *)recordId
-               inLayer:(NSString *)layer
+		   forRecordId:(NSString *)recordId
+			  forQuery:(NSDictionary *)query
                 cursor:(NSString *)cursor;
 
 /*!
