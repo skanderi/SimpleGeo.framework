@@ -112,7 +112,7 @@
 
 
 - (id)initWithId:(NSString *)id 
-dictionary:(NSDictionary *)data
+      dictionary:(NSDictionary *)data
 {
     self = [super init];
 	

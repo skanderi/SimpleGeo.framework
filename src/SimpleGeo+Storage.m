@@ -74,7 +74,7 @@
 }
 
 - (void)deleteRecordInLayer:(NSString *)layer 
-withId:(NSString *)id
+                     withId:(NSString *)id
 {
 	NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/records/%@/%@.json",
                                                   SIMPLEGEO_API_VERSION_FOR_STORAGE, layer,id]];
@@ -90,7 +90,7 @@ withId:(NSString *)id
 
 #pragma mark Methods for querying by point
 - (void)getRecordFromLayer:(NSString *)layer 
-withId:(NSString *)id
+					withId:(NSString *)id
 {
 	
 	NSURL *endpointURL = [self endpointForString:[NSString stringWithFormat:@"/%@/records/%@/%@.json",
@@ -354,10 +354,7 @@ withId:(NSString *)id
     if ([queryParams count] > 0) {
         [endpoint appendFormat:@"?%@", [queryParams componentsJoinedByString:@"&"]];
     }
-	
-	
-	
-	
+
     NSURL *endpointURL = [self endpointForString:endpoint];
     ASIHTTPRequest *request = [self requestWithURL:endpointURL];
     [request setUserInfo:userInfo];
@@ -410,13 +407,6 @@ withId:(NSString *)id
         [query removeObjectForKey:@"targetSelector"];
 		
 		SGGeometryCollection *history = [SGGeometryCollection geometryCollectionWithDictionary:jsonResponse];
-		
-		/*
-		 [delegate didLoadHistory:history 
-		 forRecordId:[[[[request userInfo] objectForKey:@"recordId"] retain] autorelease]
-		 inLayer:[[[[request userInfo] objectForKey:@"layer"] retain] autorelease]
-		 cursor:[[[[request userInfo] objectForKey:@"cursor"] retain] autorelease]];
-		 */
 		[delegate didLoadHistory:history 
 					 forRecordId:[[[[request userInfo] objectForKey:@"recordId"] retain] autorelease] 
 						forQuery:query 
